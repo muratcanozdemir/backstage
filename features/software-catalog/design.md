@@ -1,0 +1,4 @@
+# UI Design: Software Catalog
+
+**Status:** SKIPPED
+**Reason:** `spec.md` marks UI Required: Yes because the feature is visibly interacted with through a UI (browsing the catalog, reading docs) — but that UI is Backstage.io's own stock Software Catalog and TechDocs interface, not anything this feature designs or implements. Per the spec's explicit scope, no custom pages, components, or visual changes are being built (no new plugins, no custom homepage, no System/Domain views). Producing HTML mockups would mean designing screens whose real implementation is fixed by the Backstage framework and won't be built from those mockups — the mockups would have no bearing on what actually ships. Visual verification of the real app happens naturally when each story is implemented and reviewed against its acceptance criteria instead.
