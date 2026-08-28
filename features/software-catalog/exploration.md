@@ -42,7 +42,7 @@ All 10 owned repos share strong conventions (see Cross-Cutting Patterns) and wer
 - **Stack:** Python 3.12+, `uv`/hatchling. Deps: `httpx`, `pyjwt[crypto]`, `pyarrow`, `click`. `mypy --strict`.
 - **Type:** CLI tool with a documented library API.
 - **CI/CD:** `ci.yml` (ruff, format, mypy --strict, pytest; also reusable via `workflow_call`), `release.yml` (SBOM via CycloneDX, SHA-pinned actions). No dependabot config found.
-- **License:** MIT.
+- **License:** MIT. **CORRECTION (2026-08-29):** declared in `pyproject.toml` only — no standalone LICENSE file existed, the same gap independently found and fixed in `lattice`. Missed in the original pass; added during catalog registration.
 - **Maturity:** v0.1.0. Full spec-driven pipeline present: `features/org-harvest/{spec.md, exploration.md, architecture.md, stories/}` with all 17 stories marked implemented as of 2026-08-28. Most mature/complete of the batch, feature-complete for v1 but no git tags cut.
 
 ### grease
