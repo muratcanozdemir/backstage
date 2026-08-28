@@ -89,8 +89,9 @@ All 10 owned repos share strong conventions (see Cross-Cutting Patterns) and wer
 - **Purpose:** Go CLI that parses AWS serverless templates (CloudFormation/CDK/SAM), estimates current serverless vs. projected ECS Fargate costs, and generates Terraform stubs + a migration report for a strangler-pattern Lambda→ECS migration.
 - **Stack:** Go 1.23, near-zero deps (`yaml.v3` only); optional LLM integration via plain `net/http`, no SDK.
 - **Type:** Single-binary CLI / migration-analysis tool.
-- **CI/CD:** **None** — no `.github/workflows/` at all, only a dependabot config. No automated test/build/release pipeline, unlike every other repo in the batch.
-- **License:** None found.
+- **CI/CD:** **CORRECTION (2026-08-29, caught during Story 11 implementation):** this repo does have CI and release workflows (`.github/workflows/ci.yml`, `.github/workflows/release.yml`, added in commit `f760727`, with several dependabot action-bump PRs already merged on top). The original exploration below was wrong — verified by direct inspection of git history, not just current file listing. `git log --oneline -- .github/workflows/` shows the workflows were added well before this feature started. Do not add duplicate CI/CD to this repo; AC-7.5 in spec.md is voided by this correction.
+  - ~~**None** — no `.github/workflows/` at all, only a dependabot config. No automated test/build/release pipeline, unlike every other repo in the batch.~~ (superseded, see correction above)
+- **License:** None found. (Still accurate — re-verified 2026-08-29.)
 - **Maturity:** Earliest-stage — 2 commits, no tags, no CHANGELOG. Has an empty `.claude/` directory (no configured skills).
 
 ## Cross-Cutting Patterns

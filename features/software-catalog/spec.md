@@ -67,7 +67,7 @@ As the owner, I want the specific data-quality issues found during exploration f
 - **AC-7.2:** `lattice` has a standalone LICENSE file (MIT) matching what its `pyproject.toml` already declares.
 - **AC-7.3:** `gated`'s LICENSE file is changed to Apache-2.0, resolving the mismatch with its README (which already claimed Apache-2.0).
 - **AC-7.4:** `grease`'s Go module path is corrected from the placeholder `github.com/user/grease` to `github.com/muratcanozdemir/grease`, with all internal imports updated to match.
-- **AC-7.5:** `serverless-to-ecs` has CI (lint/vet/test) and release (tag-triggered build + GitHub release) workflows added, matching the pattern used by the owner's other Go repos (e.g. `gated`, `grease`), and keeps its existing dependabot configuration.
+- ~~**AC-7.5:** `serverless-to-ecs` has CI (lint/vet/test) and release (tag-triggered build + GitHub release) workflows added, matching the pattern used by the owner's other Go repos (e.g. `gated`, `grease`), and keeps its existing dependabot configuration.~~ **VOIDED 2026-08-29:** the original exploration finding this was based on was wrong — `serverless-to-ecs` already has working CI and release workflows (added in commit `f760727`, with dependabot action-bump PRs already merged on top), discovered during Story 11 implementation via `git log`. No fix needed here; see the correction note in `exploration.md`'s `serverless-to-ecs` section.
 - **AC-7.6:** The `backstage` repo itself has a LICENSE file (MIT), consistent with the rest of the owner's repos.
 - **AC-7.7:** Each affected repo's catalog entry reflects the corrected license/status once fixed.
 
@@ -99,7 +99,7 @@ As the owner, I want the specific data-quality issues found during exploration f
 - `lattice` shall gain a standalone LICENSE file (MIT) matching what it already declares in `pyproject.toml`.
 - `gated`'s LICENSE file shall be changed to Apache-2.0 (matching what its README already states).
 - `grease`'s `go.mod` module path shall be corrected from `github.com/user/grease` to `github.com/muratcanozdemir/grease`, with internal import paths updated accordingly.
-- `serverless-to-ecs` shall gain CI and release GitHub Actions workflows matching the pattern used elsewhere in the owner's Go repos, while keeping its existing dependabot config.
+- ~~`serverless-to-ecs` shall gain CI and release GitHub Actions workflows...~~ **VOIDED** — already has working CI/release workflows; see AC-7.5 correction above.
 
 ## Scope
 

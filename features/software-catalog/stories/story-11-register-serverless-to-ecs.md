@@ -19,15 +19,16 @@ As the owner, I can see `serverless-to-ecs` in the Backstage catalog with accura
 - AC-4.3: The component appears via GitHub discovery once its `catalog-info.yaml` is on the repo's default branch — no manual Backstage reconfiguration.
 - AC-6.2: The component's `owner` references the User entity from Story 1.
 - AC-7.1: The repo has a LICENSE file (MIT), matching the convention used by the rest of the owner's repos.
-- AC-7.5: The repo has CI (lint/vet/test) and release (tag-triggered build + GitHub release) workflows added, matching the pattern used by the owner's other Go repos, and keeps its existing dependabot configuration.
+- ~~AC-7.5: The repo has CI (lint/vet/test) and release (tag-triggered build + GitHub release) workflows added...~~ **VOIDED 2026-08-29:** already has working CI/release workflows (commit `f760727`, dependabot bumps already merged) — the original exploration claiming otherwise was wrong. See `exploration.md`'s correction note.
 
 ## Scope
 
 **Included:**
 - Adding `catalog-info.yaml` to the `serverless-to-ecs` repo.
 - Adding a MIT LICENSE file.
-- Adding CI and release GitHub Actions workflows matching the pattern used in `gated`/`grease`.
 - A `feature/software-catalog` branch and commit in that repo (per architecture.md: feature branch, no PR/push).
+
+**Voided:** Adding CI/release GitHub Actions workflows — not needed, this repo already has them (see Scope's Excluded note).
 
 **Excluded:**
 - Any change to the repo's application code or Terraform-generation logic.
@@ -42,6 +43,5 @@ Before starting this story, ensure:
 
 This story is complete when:
 - All acceptance criteria above are verified.
-- The new CI workflow passes against the repo's existing code.
 - Quality checks pass.
 - Code reviewed.

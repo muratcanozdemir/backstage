@@ -6,7 +6,7 @@
 
 | # | Story | Status | Started | Completed |
 |---|-------|--------|---------|-----------|
-| 1 | Platform foundation | not-started | - | - |
+| 1 | Platform foundation | implemented | 2026-08-29 | 2026-08-29 |
 | 2 | Register bazel-maven-resolver | not-started | - | - |
 | 3 | Register codegraph-lsp | not-started | - | - |
 | 4 | Register gated | not-started | - | - |
