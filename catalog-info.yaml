@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backstage
+  description: Internal developer platform cataloging every repo Murat Can Ozdemir builds, running Backstage.io itself.
+  tags: [typescript, backstage, internal-developer-platform]
+  annotations:
+    github.com/project-slug: muratcanozdemir/backstage
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  owner: user:default/muratcanozdemir
+  lifecycle: experimental

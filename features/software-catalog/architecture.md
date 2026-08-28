@@ -21,8 +21,17 @@
 
 ### TechDocs uses the local builder + local publisher
 **Decision:** `techdocs.builder: local`, `techdocs.publisher.type: local`.
-**Reasoning:** Spec explicitly scopes this instance to local/personal use only (no shared hosting). The local builder/publisher is Backstage's zero-infra default and needs no cloud storage bucket — appropriate for that scope. Docs source is each repo's existing `README.md` (no new `docs/` folder or `mkdocs.yml` structure required beyond Backstage's default README fallback).
+**Reasoning:** Spec explicitly scopes this instance to local/personal use only (no shared hosting). The local builder/publisher is Backstage's zero-infra default and needs no cloud storage bucket — appropriate for that scope.
 **Alternative considered:** External builder (CI-built docs published to cloud storage) — unnecessary complexity for a single local user.
+**Correction (verified during Story 1 implementation):** TechDocs has no built-in "just render the README" fallback — it always runs `mkdocs` via Docker and fails outright without an `mkdocs.yml` + a docs source file, confirmed by an actual failed build (`Docker container returned a non-zero exit code (1)`) against `backstage` before this was added. The original plan above ("no new docs/ folder... beyond Backstage's default README fallback") was wrong and is superseded by this note. The fix, verified working end-to-end (real docker build, screenshot-confirmed render of README content inside the TechDocs tab): add two small files to every repo being registered —
+```
+mkdocs.yml:
+  site_name: <repo-name>
+  nav:
+    - Home: index.md
+docs/index.md: a symlink to ../README.md
+```
+Backstage's local generator auto-injects the required `plugins: [techdocs-core]` entry into `mkdocs.yml` on first build if it's missing — don't add it manually, just the two lines above. Every remaining story (2–11) must add these two files alongside its `catalog-info.yaml`, not just backstage's own Story 1.
 
 ### Guest auth, no sign-in page
 **Decision:** Configure `auth.providers.guest` and set guest as the resolver so opening the app lands directly in the catalog with no credential prompt.
@@ -93,6 +102,6 @@
 ## Cross-Story Coordination
 
 - Build the Backstage app scaffold + `app-config.yaml` (discovery, guest auth, TechDocs, User entity) as one story before or alongside the first component-registration story — every component references the User entity and depends on discovery being configured to find it.
-- One story per external repo, each covering *everything* that repo needs: its `catalog-info.yaml` plus any FR-6 fix that applies to it. Concretely: `gated` (catalog-info.yaml + Apache-2.0 relicense), `grease` (catalog-info.yaml + module-path fix), `serverless-to-ecs` (catalog-info.yaml + new CI/release workflows), `bazel-maven-resolver` / `s3-vectors-at-home` (catalog-info.yaml + new LICENSE), `lattice` (catalog-info.yaml + standalone LICENSE file), and a plain catalog-info.yaml-only story for each of `codegraph-lsp`, `github-probe`, `notecast-py`, `pr-drift`. `backstage` itself gets a catalog-info.yaml + LICENSE story within this same repo (no separate branch needed since it's already on `feature/software-catalog`).
+- One story per external repo, each covering *everything* that repo needs: its `catalog-info.yaml`, its `mkdocs.yml` + `docs/index.md` symlink (see the TechDocs correction above — required for AC-3.1 in every story, not just Story 1), plus any FR-6 fix that applies to it. Concretely: `gated` (catalog-info.yaml + Apache-2.0 relicense), `grease` (catalog-info.yaml + module-path fix), `serverless-to-ecs` (catalog-info.yaml + new CI/release workflows), `bazel-maven-resolver` / `s3-vectors-at-home` (catalog-info.yaml + new LICENSE), `lattice` (catalog-info.yaml + standalone LICENSE file), and a plain catalog-info.yaml-only story for each of `codegraph-lsp`, `github-probe`, `notecast-py`, `pr-drift`. `backstage` itself gets a catalog-info.yaml + LICENSE story within this same repo (no separate branch needed since it's already on `feature/software-catalog`).
 - No ordering dependency between the 10 external-repo stories themselves — they're independent and can be implemented/reviewed in any order or in parallel.
 - Discovery config (in `app-config.yaml`) doesn't need to "know about" each repo individually — once it's configured against the whole GitHub account, every external-repo PR that lands automatically becomes visible in the catalog on the next discovery cycle. No story needs to touch `app-config.yaml` again after the scaffold story.

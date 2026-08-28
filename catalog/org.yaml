@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: muratcanozdemir
+spec:
+  profile:
+    displayName: Murat Can Ozdemir
+    email: mrtcnozdemir@gmail.com
+  memberOf: []
