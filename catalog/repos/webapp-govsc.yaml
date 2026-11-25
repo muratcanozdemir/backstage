@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: webapp-govsc
+  description: Benchmark comparing native C, Go and C-CGI web servers serving the same SQLite-backed endpoints.
+  tags: [c, go, python, shell, benchmark, sqlite]
+  annotations:
+    github.com/project-slug: muratcanozdemir/webapp-govsc
+spec:
+  type: tool
+  owner: user:default/muratcanozdemir
+  lifecycle: experimental

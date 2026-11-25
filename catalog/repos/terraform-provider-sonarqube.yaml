@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: terraform-provider-sonarqube
+  description: Terraform provider for managing SonarQube Server and Community Build (projects, quality gates, profiles, permissions, users, tokens, DevOps integrations, webhooks).
+  tags: [go, hcl, terraform, sonarqube, iac, license-mit]
+  annotations:
+    github.com/project-slug: muratcanozdemir/terraform-provider-sonarqube
+spec:
+  type: library
+  owner: user:default/muratcanozdemir
+  lifecycle: experimental
+  dependsOn:
+    - component:default/sonarqube-go-client

@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: advanced-nn
+  description: Runnable experiments showing FFN and attention layers as one similarity-weighted memory-read operation.
+  tags: [python, machine-learning, research, pytorch]
+  annotations:
+    github.com/project-slug: muratcanozdemir/advanced-nn
+spec:
+  type: research
+  owner: user:default/muratcanozdemir
+  lifecycle: experimental

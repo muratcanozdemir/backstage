@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sonarqube-go-client
+  description: Go client and CLI for the SonarQube Web API (v1) and REST API (v2), with typed methods for 659 endpoints and no dependencies outside the standard library.
+  tags: [go, sonarqube, api-client, cli, license-mit]
+  annotations:
+    github.com/project-slug: muratcanozdemir/sonarqube-go-client
+spec:
+  type: library
+  owner: user:default/muratcanozdemir
+  lifecycle: experimental

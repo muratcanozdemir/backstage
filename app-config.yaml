@@ -205,6 +205,16 @@ catalog:
       rules:
         - allow: [Component]
 
+    # Components for repos the owner created since the initial catalog rollout,
+    # registered locally (the repos aren't cloned here, so their own
+    # catalog-info.yaml can't be committed from this machine). Once one of these
+    # repos has a catalog-info.yaml on its default branch, GitHub discovery picks
+    # it up too; delete the matching file here to avoid a duplicate.
+    - type: file
+      target: ../../catalog/repos/*.yaml
+      rules:
+        - allow: [Component]
+
   providers:
     github:
       # Scans the whole GitHub account for catalog-info.yaml files, so new

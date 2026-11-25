@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: anypoint-go-client
+  description: Go client library and single-binary CLI for the MuleSoft Anypoint Platform, compatible with the Mule Terraform provider flows.
+  tags: [go, java, mulesoft, anypoint, cli, license-mit]
+  annotations:
+    github.com/project-slug: muratcanozdemir/anypoint-go-client
+spec:
+  type: library
+  owner: user:default/muratcanozdemir
+  lifecycle: experimental

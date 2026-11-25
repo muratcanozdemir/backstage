@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sonar-shell-ci-plugin
+  description: SonarQube plugin that adds static analysis of shell scripts (ShellCheck rules) and CI pipelines (GitHub Actions, GitLab CI, Azure Pipelines) on Community Build.
+  tags: [java, shell, sonarqube, ci-cd, static-analysis, license-mit]
+  annotations:
+    github.com/project-slug: muratcanozdemir/sonar-shell-ci-plugin
+spec:
+  type: plugin
+  owner: user:default/muratcanozdemir
+  lifecycle: experimental
